@@ -60,6 +60,7 @@ func RegisterApplet(invoke string) (a *Applet, err error) {
 		cmd:      exec.Command(invoke),
 		errchan:  make(chan error),
 		stopchan: make(chan struct{}),
+		dispatch: CoreDispatcher,
 	}
 	a.stdin, err = a.cmd.StdinPipe()
 	if err != nil {
